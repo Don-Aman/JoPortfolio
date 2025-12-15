@@ -10,6 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap"
         rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
@@ -60,7 +61,7 @@
             padding: 18px 40px;
         }
 
-        nav.scrolled a{
+        nav.scrolled a {
             color: black;
         }
 
@@ -89,6 +90,7 @@
         .nav-links {
             display: flex;
             gap: 40px;
+            align-items: center;
         }
 
         nav a {
@@ -133,6 +135,92 @@
             width: 100%;
         }
 
+        /* ================= CONTACT DROPDOWN ================= */
+        .contact-dropdown {
+            position: relative;
+        }
+
+        .contact-trigger {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(15, 15, 18, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(180, 140, 90, 0.3);
+            border-radius: 4px;
+            padding: 20px;
+            min-width: 250px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .dropdown-content.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content nav.scrolled & {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .contact-info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-info-item i {
+            width: 20px;
+            margin-right: 12px;
+            color: var(--accent);
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        .contact-info-item span {
+            flex: 1;
+        }
+
+        .contact-info-item a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: normal;
+            text-transform: none;
+        }
+
+        .contact-info-item a:hover {
+            color: var(--accent);
+        }
+
+        nav.scrolled .contact-info-item {
+            color: var(--text-dark);
+        }
+
+        nav.scrolled .contact-info-item a {
+            color: var(--text-dark);
+        }
+
+        nav.scrolled .contact-info-item a:hover {
+            color: var(--accent);
+        }
+
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -163,16 +251,16 @@
         }
 
         /* ================= HOME PAGE: FULL WIDTH SINGLE COLUMN ================= */
-   
+
 
         .artboard {
             width: 100vw;
             /* height: 100vh; */
-            overflow: hidden;
+            /* overflow: hidden; */
             position: relative;
             margin: 0;
             padding: 0;
-            /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
+            border-bottom: 26px solid rgb(128, 128, 128);
         }
 
         .artboard:last-child {
@@ -188,9 +276,6 @@
             transition: transform 0.5s ease;
         }
 
-        /* .artboard:hover img {
-             transform: scale(1.03); 
-        } */
 
         /* Optional: Add image captions */
         .image-caption {
@@ -282,25 +367,98 @@
             margin-bottom: 30px;
         }
 
-        .contact-info {
-            margin-bottom: 40px;
-        }
+/* ================= CONTACT DROPDOWN ================= */
+.contact-dropdown {
+    position: relative;
+}
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            color: var(--text-dark);
-            font-size: 16px;
-        }
+.contact-trigger {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
 
-        .contact-item i {
-            width: 24px;
-            margin-right: 12px;
-            color: var(--accent);
-            font-style: normal;
-            font-weight: 500;
-        }
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(180, 140, 90, 0.3);
+    border-radius: 4px;
+    padding: 20px;
+    min-width: 250px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-content.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #333; /* Dark text on white background */
+    font-size: 14px;
+}
+
+.contact-info-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Bootstrap Icons styling */
+.contact-info-item .bi {
+    width: 20px;
+    margin-right: 12px;
+    color: var(--accent); /* Gold accent color for icons */
+    font-size: 14px;
+    text-align: center;
+}
+
+.contact-info-item span {
+    flex: 1;
+    color: #333; /* Dark text */
+}
+
+.contact-info-item a {
+    color: #333; /* Dark text */
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: normal;
+    text-transform: none;
+}
+
+.contact-info-item a:hover {
+    color: var(--accent); /* Gold on hover */
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 900px) {
+    .dropdown-content {
+        right: -100%;
+        min-width: 200px;
+    }
+    
+    .contact-dropdown {
+        position: static;
+    }
+    
+    .contact-info-item {
+        color: #333; /* Ensure dark text on mobile */
+    }
+    
+    .contact-info-item a {
+        color: #333; /* Ensure dark text on mobile */
+    }
+}
 
         .bio-text {
             font-size: 17px;
@@ -355,6 +513,10 @@
 
             .name {
                 font-size: 36px;
+            }
+
+            .dropdown-content {
+                right: -50%;
             }
         }
 
@@ -421,6 +583,15 @@
             .profile-placeholder {
                 height: 400px;
             }
+
+            .dropdown-content {
+                right: -100%;
+                min-width: 200px;
+            }
+
+            .contact-dropdown {
+                position: static;
+            }
         }
 
         @media (max-width: 600px) {
@@ -470,22 +641,44 @@
             }
         }
     </style>
+    
+
 </head>
 
 <body>
 
     <nav id="mainNav">
         <div class="nav-container">
-            <a href="#" class="logo">YM</a>
+            <a href="#" class="logo">PORTFOLIO</a>
 
             <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
 
             <div class="nav-links" id="navLinks">
-                <a href="#" class="nav-link active" data-page="home">Home</a>
-                <a href="#" class="nav-link" data-page="work">Work</a>
-                <a href="#" class="nav-link" data-page="projects">Projects</a>
+                <a href="#" class="nav-link active" data-page="home">Projects</a>
                 <a href="#" class="nav-link" data-page="about">About</a>
-                <a href="#" class="nav-link" data-page="contact">Contact</a>
+
+                <!-- Contact Dropdown -->
+            <!-- Add Bootstrap Icons to your head -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+            
+            <!-- Updated Contact Dropdown in your nav -->
+            <div class="contact-dropdown">
+                <a href="#" class="nav-link contact-trigger" id="contactTrigger">Contact</a>
+                <div class="dropdown-content" id="dropdownContent">
+                    <div class="contact-info-item">
+                        <i class="bi bi-geo-alt"></i>
+                        <span>Boston, MA</span>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="bi bi-telephone"></i>
+                        <span>+1 (617) 518-1606</span>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="bi bi-envelope"></i>
+                        <a href="mailto:Yoseph.Markos@the-bac.edu">Yoseph.Markos@the-bac.edu</a>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     </nav>
@@ -493,57 +686,52 @@
     <div class="main-content">
         <!-- Home Page - Full Width Images, One Per Row -->
         <div class="page-wrapper active" id="home-page">
-                <div class="artboard">
-                    <img src="4.jpg" alt="Design project 4">
-                   
-                </div>
-                <div class="artboard">
-                    <img src="5.jpg" alt="Design project 5">
-                    <div class="image-caption">
-                        <div class="caption-title">Project Title 5</div>
-                        <div class="caption-description">Brief description of this architectural project and its key
-                            features.</div>
-                    </div>
-                </div>
-                <div class="artboard">
-                    <img src="6.jpg" alt="Design project 6">
-                    <div class="image-caption">
-                        <div class="caption-title">Project Title 6</div>
-                        <div class="caption-description">Brief description of this architectural project and its key
-                            features.</div>
-                    </div>
-                </div>
-            
-        </div>
-
-        <!-- Work Page - Single Image -->
-        <div class="page-wrapper" id="work-page">
-            <div class="page-image">
-                <img src="work-main.jpg" alt="Work portfolio">
+            <div class="artboard">
+                <img src="1-01.jpg">
             </div>
-        </div>
-
-        <!-- Projects Page - Single Image -->
-        <div class="page-wrapper" id="projects-page">
-            <div class="page-image">
-                <img src="projects-main.jpg" alt="Projects overview">
+            <div class="artboard">
+                <img src="1-03.jpg">
             </div>
+            <div class="artboard">
+                <img src="1-04.jpg">
+            </div>
+            <div class="artboard">
+                <img src="1-05.jpg">
+            </div>
+            <div class="artboard">
+                <img src="1-06.jpg">
+            </div>
+            <div class="artboard">
+                <img src="1-07.jpg">
+            </div>
+            <div class="artboard">
+                <img src="1-08.jpg">
+            </div>
+            <div class="artboard">
+                <img src="1-09.jpg">
+            </div>
+            <div class="artboard">
+                <img src="1-10.jpg">
+            </div>
+            <div class="artboard">
+                <img src="1-11.jpg">
+            </div>
+            <div class="artboard">
+                <img src="1-12.jpg">
+            </div>
+            <div class="artboard">
+                <img src="1-13.jpg">
+            </div>
+
         </div>
 
         <!-- About Page -->
         <div class="page-wrapper" id="about-page">
             <div class="artboard">
-                <img src="3.jpg" alt="Design project 3">
-            
-            </div>
-               
-        </div>
+                <img src="1-02.jpg" alt="Design project 3">
 
-        <!-- Contact Page - Single Image -->
-        <div class="page-wrapper" id="contact-page">
-            <div class="page-image">
-                <img src="contact-bg.jpg" alt="Contact information">
             </div>
+
         </div>
     </div>
 
@@ -555,6 +743,8 @@
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
         const navLinksAll = document.querySelectorAll('.nav-link');
+        const contactTrigger = document.getElementById('contactTrigger');
+        const dropdownContent = document.getElementById('dropdownContent');
 
         // All page wrappers
         const pageWrappers = document.querySelectorAll('.page-wrapper');
@@ -571,6 +761,26 @@
         // Mobile menu toggle
         mobileMenuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+        });
+
+        // Contact dropdown toggle
+        contactTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropdownContent.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            // Close mobile menu
+            if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+
+            // Close contact dropdown
+            if (!contactTrigger.contains(e.target) && !dropdownContent.contains(e.target)) {
+                dropdownContent.classList.remove('active');
+            }
         });
 
         // Page switching function
@@ -591,26 +801,25 @@
                 }
             });
 
-            // Close mobile menu
+            // Close mobile menu and dropdown
             navLinks.classList.remove('active');
+            dropdownContent.classList.remove('active');
 
             // Scroll to top when switching pages
             window.scrollTo(0, 0);
         }
 
-        // Add click events to nav links
+        // Add click events to nav links (excluding contact trigger)
         navLinksAll.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const pageId = link.getAttribute('data-page');
-                switchPage(pageId);
-            });
-        });
+            if (link !== contactTrigger) {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = link.getAttribute('data-page');
+                    switchPage(pageId);
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                navLinks.classList.remove('active');
+                    // Close dropdown if open
+                    dropdownContent.classList.remove('active');
+                });
             }
         });
 
